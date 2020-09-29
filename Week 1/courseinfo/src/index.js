@@ -21,7 +21,6 @@ const Content = (props) => {
     )
 }
 const Total = (props) => {
-    const course = props;
     const total = props.course.parts[0].exercises + props.course.parts[1].exercises + props.course.parts[2].exercises
     return (
         <>
