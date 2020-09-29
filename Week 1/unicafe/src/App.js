@@ -2,6 +2,8 @@ import React, { useState } from 'react'
 import { render } from 'react-dom';
 import './App.css';
 
+//for statistics component
+
 const Statistics = props => {
   if (props.text === "Positive") {
     return (<h4>{props.text}:  {props.stats}%</h4>)
