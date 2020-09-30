@@ -1,39 +1,63 @@
 import React, { useState } from 'react'
-import { render } from 'react-dom';
 import './App.css';
 
 //for statistics component
 
 const Statistics = props => {
+
+
   if (props.text === "Positive") {
     return (<h4>{props.text}:  {props.stats}%</h4>)
   };
   return (
-    <h4>{props.text}:  {props.stats}</h4>)
+
+
+    <table>
+      <tbody>
+        <tr>
+          <td>{props.text}:</td>
+          <td>{props.stats} </td>
+        </tr>
+      </tbody>
+    </table>
+
+
+  )
+
+
+};
+
+const Buttons = ({ setGood, setBad, setNeutral }) => {
+  return (
+    <>
+      <button onClick={() => setGood((good) => good + 1)}>Good</button>
+      <button onClick={() => setNeutral((neutral) => neutral + 1)}>Neutral</button>
+      <button onClick={() => setBad((bad) => bad + 1)}>Bad</button>
+    </>
+  )
 };
 
 const App = (props) => {
   // save clicks of each button to own state
-  const [good, setGood] = useState(0)
-  const [neutral, setNeutral] = useState(0)
-  const [bad, setBad] = useState(0)
+  const [good, setGood] = useState(null)
+  const [neutral, setNeutral] = useState(null)
+  const [bad, setBad] = useState(null)
 
-  const setToGood = () => {
-    setGood(good + 1)
+  if (!(good || bad || neutral)) {
+    return (
+      <>
+        <h1>Give feedback</h1>
+        <Buttons {...{ setGood, setBad, setNeutral }} />
+        <h1>Statistics</h1>
+        <h4>No feedbacks given</h4>
+      </>
+    )
   }
-  const setToNeutral = () => {
-    setNeutral(neutral + 1)
-  }
-  const setToBad = () => {
-    setBad(bad + 1)
-  }
+
   return (
     <div>
       <h1>Give feedback</h1>
-      <button onClick={() => setToGood()}>Good</button>
-      <button onClick={() => setToNeutral()}>Neutral</button>
-      <button onClick={() => setToBad()}>Bad</button>
-
+      <Buttons {...{ setGood, setBad, setNeutral }} />
       <h1>Statistics</h1>
       <Statistics text="Good" stats={good} />
       <Statistics text="Neutral" stats={neutral} />
