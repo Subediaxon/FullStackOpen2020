@@ -2,17 +2,31 @@ import React, { useState } from 'react'
 import ReactDOM from 'react-dom'
 import './index.css';
 
+
 const App = (props) => {
   const [selected, setSelected] = useState(0)
+  const [votes, setVotes] = useState({})
 
-  const random = () => Math.floor(Math.random() * props.anecdotes.length);
+  const random_ind = () => Math.floor(Math.random() * props.anecdotes.length);
+
+  const handleVotes = () => {
+    let copy = { ...votes };
+    if (selected in copy) {
+      copy[selected] = copy[selected] + 1
+    } else {
+      copy[selected] = 1
+    }
+    setVotes(copy)
+  }
 
   return (
     <div>
       <h1>Accectodes APP</h1>
       <span>{props.anecdotes[selected]}</span> <br />
-      <button className="btn" onClick={() => setSelected(random)}>Next annectdotes</button>
-    </div >
+      <h5>No of Votes: {votes[selected]}</h5>
+      <button className="btn" onClick={() => setSelected(random_ind)}>Next annectdotes</button>
+      <button className="btn" onClick={handleVotes}>Vote this quote</button>
+    </div>
   )
 }
 

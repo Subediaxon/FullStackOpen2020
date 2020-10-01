@@ -11,13 +11,16 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
+div{
+  padding: 0% 3%;
+}
 h1{
   text-align: center;
   margin-bottom: 20px;
 }
+
 span{
   font-style: italic;
-  padding: 0% 5%;
 }
 .btn{
   width: 250px;
