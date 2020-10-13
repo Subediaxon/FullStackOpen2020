@@ -1,0 +1,11 @@
+*{
+  padding: 0.5%;
+}
+.App {
+  text-align: center;
+}
+
+#submit-btn{
+  margin-top: 20px;
+  padding: 10px;
+}
